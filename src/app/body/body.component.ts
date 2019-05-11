@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../github.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-//https://hidden-sierra-27470.herokuapp.com/ | https://git.heroku.com/hidden-sierra-27470.git
 
 @Component({
   selector: 'app-body',

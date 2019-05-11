@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';  // Import it up
 })
 export class GithubService {
 
-  private url =  "https://cors-anywhere.herokuapp.com/https://afternoon-eyrie-95627.herokuapp.com";
+  private url =  "https://afternoon-eyrie-95627.herokuapp.com";
 
   constructor(private http: HttpClient) {}
 
