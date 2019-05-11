@@ -1,0 +1,60 @@
+<div class="container-fluid" *ngIf="isDataAvailable" >
+  <h3>Users Details</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">LOGIN</th>
+        <th scope="col">PROFILE URL</th>
+        <th scope="col">DATE OF CREATION</th>
+        <th scope="col"> <button type="button" (click)="this.getRepo()" class="btn btn-primary">Show Repo</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.login}}</td>
+        <td>{{user.html_url}}</td>
+        <td>{{user.created_at}}</td>
+      </tr>
+    </tbody>
+  </table>
+<br>
+<div *ngIf="isRepoAvailable">
+  <h3>Public repositories</h3>      
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">REPOSITORY URL</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let repo of repos; let i = index">
+      <tr>
+        <th scope="row">{{repo.id}}</th>
+        <td>{{repo.name}}</td>
+        <td>{{repo.html_url}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="fixed-bottom"> 
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item ">
+          <a class="page-link" type="button" (click)="previousPage()" >Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" type="button" (click)="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+  
+  
