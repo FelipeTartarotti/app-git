@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../github.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-details',
@@ -20,7 +21,7 @@ export class DetailsComponent implements OnInit {
   public finalRepo = this.numberReposByPage;
   public numberUsers;
 
-  constructor(private github: GithubService,public router: Router) { }
+  constructor(private github: GithubService,public router: Router,private spinner: NgxSpinnerService) { }
   
   ngOnInit() {
     this.username = JSON.parse(localStorage.getItem("username"));
@@ -28,26 +29,32 @@ export class DetailsComponent implements OnInit {
   }
 
   async getUserDetail(){
+    this.spinner.show();
     await this.github.getUserDetail(this.username)
     .then((result: any) => {
       this.user = result;
+      this.spinner.hide();
     })
     .catch((error: any) => {
       alert("Ops! We couldn't retive the information");
       console.log(error);
+      this.spinner.hide();
     });
     this.isDataAvailable = true;
   }
 
   async getRepo(){
+    this.spinner.show();
     await this.github.getUserRepo(this.username)
     .then((result: any) => {
       window.localStorage.setItem("repos", JSON.stringify(result));
       this.showResult();  
+      this.spinner.hide();
     })
     .catch((error: any) => {
       alert("Ops! We couldn't retive the information");
       console.log(error);
+      this.spinner.hide();
     });
     this.isRepoAvailable = true;
   }
@@ -78,7 +85,7 @@ export class DetailsComponent implements OnInit {
     if(this.finalRepo<this.numberReposByPage){
       this.finalRepo = this.numberReposByPage;
     }
-    this.localRepos = JSON.parse(localStorage.getItem("users"));
+    this.localRepos = JSON.parse(localStorage.getItem("repos"));
     this.repos = this.localRepos.slice(this.initialRepo,this.finalRepo);
   }
 }

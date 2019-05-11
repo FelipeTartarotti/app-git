@@ -1,20 +1,22 @@
 <div class="container-fluid">
   <h3>GitHub Users </h3>
   <div id="button">
+    <br>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Write the number of users you want to retrive" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="this.numberUsers">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary"  (click)="getUsers()" type="button" id="button-addon2">Get Users</button>
+        <button class="btn btn-primary"  (click)="getUsers()" type="button" id="button-addon2">Get Users</button>
       </div>
     </div>
   </div>
   <br>
   <div *ngIf="isDataAvailable">
   <table class="table" >
-      <thead>
+      <thead thead class="thead-dark">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">LOGIN</th>
+          <th scope="col"> </th>
         </tr>
       </thead>
       <tbody *ngFor="let user of users; let i = index">
@@ -40,4 +42,4 @@
     </div>
   </div>
 </div>
-
+<ngx-spinner></ngx-spinner>
