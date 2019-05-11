@@ -24,6 +24,8 @@ export class BodyComponent implements OnInit {
   }
 
   async getUsers() {
+    this.initialUser = 0
+    this.finalUser = this.numberUserByPage;
     this.spinner.show();
     await this.github.getUsers("0",this.numberUsers)
     .then((result: any) => {
