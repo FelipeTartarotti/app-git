@@ -10,6 +10,5 @@ export class NavComponent implements OnInit {
   constructor(public router: Router) { }
   ngOnInit() {
     this.router.navigate(['body']);
-  
   }
 }
