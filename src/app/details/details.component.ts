@@ -72,6 +72,8 @@ export class DetailsComponent implements OnInit {
   
     this.localRepos = JSON.parse(localStorage.getItem("users"));
 
+    console.log(this.localRepos[0].name);
+
     if(this.finalRepo>this.localRepos.length){
       this.initialRepo = this.initialRepo - this.numberReposByPage;
       this.finalRepo = this.finalRepo - this.numberReposByPage;
@@ -81,6 +83,7 @@ export class DetailsComponent implements OnInit {
     this.finalRepo = this.finalRepo + this.numberReposByPage;
 
     this.repos = this.localRepos.slice(this.initialRepo,this.finalRepo);
+    console.log(this.repos[0].name);
   }
 
   previousPage(){
